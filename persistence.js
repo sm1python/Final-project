@@ -64,15 +64,3 @@ async function getLocations(){
 module.exports = {
     getUserDetails, saveSession, getSessionData, deleteSession, saveUser, getLocations
 }
-
-/*
-async function connectDatabase() {
-    if (!client) {
-        client = new mongodb.MongoClient('mongodb+srv://robert:12class34@cluster0.qgtdkrd.mongodb.net/')
-        await client.connect()
-        db = client.db('bookstore')
-        users = db.collection('UserAccounts')
-        session = db.collection('SessionData')
-    }
-}
-*/
