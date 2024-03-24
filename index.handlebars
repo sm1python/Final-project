@@ -1,0 +1,18 @@
+<body>
+    <table class="table">
+  <thead class="table-light">
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Contact</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each location}}
+    <tr>
+        <td>{{this.name}}</td><td>{{this.location.coordinates}}</td><td>{{this.location.contact}}</td>
+        </tr>
+    {{/each}}
+  </tbody>
+</table>
+</body>
