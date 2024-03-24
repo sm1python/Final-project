@@ -4,15 +4,16 @@ let client = undefined
 let db = undefined
 let users = undefined
 let session = undefined
-
+let location = undefined
 
 async function connectDatabase() {
     if (!client) {
-        client = new mongodb.MongoClient('#')
+        client = new mongodb.MongoClient('mongodb+srv://60301991:Manutd137@ahmed.ikee5hi.mongodb.net/')
         await client.connect()
-        db = client.db('#')
+        db = client.db('Project')
         users = db.collection('UserAccounts')
         session = db.collection('SessionData')
+        location = db.collection('locations')
     }
 }
 
@@ -43,6 +44,35 @@ async function deleteSession(key) {
     await session.deleteOne({SessionKey: key})
 }
 
-module.exports = {
-    getUserDetails, saveSession, getSessionData, deleteSession
+async function saveUser(username, password) {
+    await connectDatabase(); // Ensure database connection
+
+    await users.insertOne({
+        username: username,
+        password: password,
+        userType: userType
+    });
 }
+
+async function getLocations(){
+    await connectDatabase()
+    let result = location.find()
+    let resultData = result.toArray()
+    return resultData
+}
+
+module.exports = {
+    getUserDetails, saveSession, getSessionData, deleteSession, saveUser, getLocations
+}
+
+/*
+async function connectDatabase() {
+    if (!client) {
+        client = new mongodb.MongoClient('mongodb+srv://robert:12class34@cluster0.qgtdkrd.mongodb.net/')
+        await client.connect()
+        db = client.db('bookstore')
+        users = db.collection('UserAccounts')
+        session = db.collection('SessionData')
+    }
+}
+*/
