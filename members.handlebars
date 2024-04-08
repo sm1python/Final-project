@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Dashboard</title>
+    {{!-- <!-- Include necessary CSS and JavaScript -->
+    app.use(fileUpload())
+
+app.post('/uploadfile', async (req, res) => {
+    console.log(req.files)
+    let theFile = req.files.submission
+    let fileName = theFile.name
+    await theFile.mv(`${__dirname}/uploads/${Date.now()}_${fileName}`)
+    //await theFile.mv(`${__dirname}/uploads/${fileName}`)
+    res.send('ok')
+}) --}}
+</head>
+<body>
+    <h1>Welcome, {{ memberName }}</h1>
+    <form action="/submit_data" method="POST" enctype="multipart/form-data">
+        <label for="text_post">Create New Text Post:</label><br>
+        <textarea id="text_post" name="text_post" rows="4" cols="50"></textarea><br>
+        <label for="food_water">Food and Water Placed:</label><br>
+        <input type="text" id="food_water" name="food_water"><br>
+        <label for="current_food">Current Food Amount:</label><br>
+        <input type="text" id="current_food" name="current_food"><br>
+        <label for="cats_count">Number of Cats:</label><br>
+        <input type="number" id="cats_count" name="cats_count"><br>
+        <label for="issue">Report Health Issue or Critical Item:</label><br>
+        <textarea id="issue" name="issue" rows="4" cols="50"></textarea><br>
+        <label for="picture">Upload Picture:</label><br>
+        <input type="file" id="picture" name="picture" accept="image/*"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
