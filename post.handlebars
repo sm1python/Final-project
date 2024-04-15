@@ -1,0 +1,31 @@
+<br>
+Welcome {{ username }}
+<br>
+
+<form id="postForm" action="/textPost" method="post">
+    <label for="location">Location:</label>
+    <input type="text" id="location" name="location" required> <br>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" ></textarea><br>
+
+    <label for="foodPlaced">Food Placed:</label>
+    <input type="number" id="foodPlaced" name="foodPlaced" required><br>
+
+    <label for="waterPlaced">Water Placed:</label>
+    <input type="number" id="waterPlaced" name="waterPlaced" required><br>
+
+    <label for="foodRemaining">Food Remaining:</label>
+    <input type="number" id="foodRemaining" name="foodRemaining" required><br>
+
+    <label for="catsCount">Number of Cats:</label>
+    <input type="number" id="catsCount" name="catsCount" required><br>
+
+    
+    <label for="picture">Choose a picture:</label>
+    <input type="file" id="picture" name="picture" accept="image/*"><br>
+
+    <input type="submit">
+
+</form>
+
