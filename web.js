@@ -117,4 +117,26 @@ app.post('/register', async(req, res) => {
     res.redirect('/login?message=Registration successful. Please log in.');
 });
 
+app.post('/textPost', async(req,res)=>{
+    let location = req.body.location
+    let foodPlaced = req.body.foodPlaceed
+    let waterPlaced = req.body.waterPlaced
+    let foodRemaining = req.body.foodRemaining
+    let description = req.body.description
+    let picture = req.body.picture
+    let catsCount = req.body.catsCount
+    let data = {
+        location:location,
+        foodPlaced:foodPlaced,
+        foodRemaining:foodRemaining,
+        waterPlaced:waterPlaced,
+        description:description,
+        picture:picture,
+        catsCount:catsCount
+    }
+    business.savePost(data)
+    res.redirect('/member')
+   
+})
+
 app.listen(8000, () => { console.log("Running")})
