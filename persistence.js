@@ -74,5 +74,5 @@ async function updatePass(data){
 
 
 module.exports = {
-    getUserDetails, saveSession, getSessionData, deleteSession, saveUser, getLocations, updatePass
+    getUserDetails, saveSession, getSessionData, deleteSession, saveUser, getLocations, updatePass, savePost
 }
