@@ -42,6 +42,10 @@ async function getLocations(){
     return await persistence.getLocations()
 }
 
+async function savePost(data){
+    return await persistence.savePost(data)
+}
+
 module.exports = {
     checkLogin, startSession, getSessionData, deleteSession, registerUser, getLocations
 }
