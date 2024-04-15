@@ -47,5 +47,5 @@ async function savePost(data){
 }
 
 module.exports = {
-    checkLogin, startSession, getSessionData, deleteSession, registerUser, getLocations
+    checkLogin, startSession, getSessionData, deleteSession, registerUser, getLocations, savePost
 }
