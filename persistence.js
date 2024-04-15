@@ -66,7 +66,13 @@ async function savePost(data) {
     await post.insertOne(data)
 }
 
+async function updatePass(data){
+    await connectDatabase()
+    await users.updateOne({UserName: data.username}, {$set:{Password:data.newPass}})
+}
+
+
 
 module.exports = {
-    getUserDetails, saveSession, getSessionData, deleteSession, saveUser, getLocations
+    getUserDetails, saveSession, getSessionData, deleteSession, saveUser, getLocations, updatePass
 }
