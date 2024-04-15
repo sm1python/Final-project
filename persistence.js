@@ -61,6 +61,12 @@ async function getLocations(){
     return resultData
 }
 
+async function savePost(data) {
+    await connectDatabase()
+    await post.insertOne(data)
+}
+
+
 module.exports = {
     getUserDetails, saveSession, getSessionData, deleteSession, saveUser, getLocations
 }
