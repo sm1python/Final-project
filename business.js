@@ -45,7 +45,20 @@ async function getLocations(){
 async function savePost(data){
     return await persistence.savePost(data)
 }
+async function updatePass(data){
+    let details = await persistence.getUserDetails(data.username)
+    if (details.Password == data.oldPass) {
+        if (data.conPass == data.newPass) {
+            await persistence.updatePass(data)
+            return true
+        }
+    }
+    else{
+        return false
+    }
+
+}
 
 module.exports = {
-    checkLogin, startSession, getSessionData, deleteSession, registerUser, getLocations, savePost
+    checkLogin, startSession, getSessionData, deleteSession, registerUser, getLocations, savePost, updatePass
 }
