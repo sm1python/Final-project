@@ -139,4 +139,19 @@ app.post('/textPost', async(req,res)=>{
    
 })
 
+app.get('/post', async (req, res) => {
+    let sessionKey = req.cookies.Session_id
+    if (!sessionKey) {
+        res.redirect("/?message=Not logged in1")
+        return
+    }
+    let sessionData = await business.getSessionData(sessionKey)
+    if (!sessionData) {
+        res.redirect("/?message=Not logged in2")
+        return
+    }
+    res.render('post', {username: sessionData.Data.UserName})
+})
+
+
 app.listen(8000, () => { console.log("Running")})
