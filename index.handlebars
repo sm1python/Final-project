@@ -1,18 +1,25 @@
 <body>
-    <table class="table">
-  <thead class="table-light">
-    <tr>
+  <table class="table">
+    <thead class="table-light">
+      <tr>
         <th>Name</th>
         <th>Location</th>
         <th>Contact</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each location}}
-    <tr>
-        <td>{{this.name}}</td><td>{{this.location.coordinates}}</td><td>{{this.location.contact}}</td>
-        </tr>
-    {{/each}}
-  </tbody>
-</table>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each location}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td><iframe src={{this.location}} width="400" height="250" style="border:0;"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+        <td>{{this.contact}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <footer>
+    <h3>ABOUT US</h3>
+    <p>At our website, we're passionate about caring for our feline friends and ensuring their well-being. We believe that every cat deserves love, care, and a full belly. Our mission is to provide a platform where cat lovers can come together to support and help these amazing creatures. Whether it's through providing food, medical assistance, or finding loving homes, we're dedicated to making a positive difference in the lives of cats. With a community of compassionate individuals, volunteers, and supporters, we strive to create a world where every cat is cherished and given the opportunity to thrive. Join us in our journey to make a paw-sitive impact and spread love to our furry companions!</p>
+  </footer>
 </body>
