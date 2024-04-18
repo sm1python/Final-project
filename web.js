@@ -50,6 +50,7 @@ app.post('/login', async (req,res) => {
 
 
 app.get('/member', async (req, res) => {
+    let loco = await business.getLocations()
     let sessionKey = req.cookies.Session_id
     if (!sessionKey) {
         res.redirect("/?message=Not logged in1")
@@ -65,7 +66,7 @@ app.get('/member', async (req, res) => {
         res.redirect("/?message=Invalid User Type")
         return
     }
-    res.render('member_landing', {username: sessionData.Data.UserName})
+    res.render('member_landing', {username: sessionData.Data.UserName, location: loco, message: req.query.message})
 })
 
 app.get('/logout', async (req, res) => {
