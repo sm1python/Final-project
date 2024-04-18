@@ -1,22 +1,26 @@
 <body>
-  <table class="table">
-    <thead class="table-light">
-      <tr>
-        <th>Name</th>
-        <th>Location</th>
-        <th>Contact</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each location}}
-      <tr>
-        <td>{{this.name}}</td>
-        <td><iframe src={{this.location}} width="400" height="250" style="border:0;"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
-        <td>{{this.contact}}</td>
-      </tr>
-      {{/each}}
-    </tbody>
-  </table>
-  
+    <h1>
+        Welcome, {{ username }}
+    </h1>
+
+    <table class="table">
+        <thead class="table-light">
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Contact</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each location}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td><iframe src={{this.location}} width="400" height="250" style="border:0;" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+                <td>{{this.contact}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <p>Would you like to <a href="/post">post</a>?</p>
 </body>
