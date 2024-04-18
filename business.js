@@ -59,6 +59,27 @@ async function updatePass(data){
 
 }
 
+async function resetPass(email) {
+    let details = await persistence.getUserEmail(email)
+    if (details) {
+        let key = crypto.randomUUID()
+        let body = `
+        A password reset request has been made for your account.  Please
+        Enter the following key : ${key}
+        and set a new password for your account.`
+        console.log(body)
+        let data = {
+            key:key,
+            Expiry: new Date(Date.now() + 1000 * 60 * 2)
+        }
+        await persistence.saveKey(data)
+        return true
+    }
+    else{
+        return false
+    }
+}
+
 module.exports = {
-    checkLogin, startSession, getSessionData, deleteSession, registerUser, getLocations, savePost, updatePass
+    checkLogin, startSession, getSessionData, deleteSession, registerUser, getLocations, savePost, updatePass, resetPass
 }
