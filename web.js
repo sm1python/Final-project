@@ -18,7 +18,7 @@ app.get('/', async(req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    res.render('login', {message: req.query.message})
+    res.render('mainlogin', {message: req.query.message})
 })
 
 app.post('/login', async (req,res) => {
@@ -57,7 +57,7 @@ app.get('/member', async (req, res) => {
     }
     let sessionData = await business.getSessionData(sessionKey)
     if (!sessionData) {
-        res.redirect("/?message=Not logged in2")
+        res.redirect("/?message=Not logged in]")
         return
     }
 
@@ -93,27 +93,24 @@ app.get('/admin', async (req, res) => {
 })
 
 app.get('/register', (req, res) => {
-    res.render('register', {message: req.query.message});
+    res.render('mainregister', {message: req.query.message});
 })
 
 app.post('/register', async(req, res) => {
     let username = req.body.username;
     let password = req.body.password;
-    let userType = req.body.userType;
+    let conPass = req.body.conPass
+    let email = req.body.email
 
-    // Basic input validation
-    if (!username || !password) {
+    if (!username || !password || !conPass || !email) {
         return res.redirect('/register?message=Please fill out all fields');
     }
-    // Check if the username already exists
-    let existingUser = await persistence.getUserDetails(username);
-    if (existingUser) {
-        return res.redirect('/register?message=Username already exists');
-    }
-    // Register the user
-    await business.registerUser(username, password, userType);
 
-    // Redirect to login page with success message
+    let tr = await business.registerUser(username, password, conPass, email);
+    if (!tr) {
+        res.render('error')
+    }
+
     res.redirect('/login?message=Registration successful. Please log in.');
 });
 
@@ -152,6 +149,70 @@ app.get('/post', async (req, res) => {
     }
     res.render('post', {username: sessionData.Data.UserName})
 })
+
+app.get('/forgot-password', async (req, res) => {
+    res.render('forgotPassword')
+})
+
+app.post('/forgot-password', async (req, res) => {
+    let email = req.body.email
+    let t = await business.resetPass(email)
+    if (!t) {
+        res.redirect('/forgot-password?message=email is not found', {message: message})
+    }
+    res.redirect('forgot-password2')
+})
+
+app.get('/forgot-password2', async (req, res) => {
+    res.render('forgotPassword2')
+})
+
+app.post('/forgot-password2', async (req, res) => {
+    let key = req.body.key
+    let pass = req.body.password
+    let email = req.body.email
+    let data = {
+        key:key,
+        password:pass,
+        email:email
+    }
+    let t = await business.checkKey(data)
+    if (!t) {
+        res.redirect('/forgot-password2?message=email is not found', {message: message})
+    }
+    res.redirect('login')
+})
+
+
+app.get('/reset-password', async (req, res) => {
+    res.render('resetPassword')
+})
+
+
+app.post('/reset-password', async (req, res) => {
+    let username = req.body.username
+    let oldPass = req.body.oldPass
+    let newPass = req.body.newPass
+    let conPass = req.body.conPass
+    let data = {
+        oldPass : oldPass,
+        newPass : newPass,
+        conPass : conPass,
+        username : username
+    }
+    let t = await business.updatePass(data)
+    if (!t) {
+        res.redirect('/reset-password?message=error', {message: message})
+    }
+    else{
+        res.redirect('/login?message=please login', {message: message})
+    }
+
+})
+
+app.use((req, res, next) => {
+    res.status(404).render('error');
+});
 
 
 app.listen(8000, () => { console.log("Running")})
