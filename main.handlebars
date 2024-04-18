@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        li,
+        a,
+        button {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 5px 10%;
+            background-color: #24252A;
+        }
+
+        .logo {
+            cursor: pointer;
+            margin-right: auto;
+            width: 220px;
+        }
+
+        .nav {
+            list-style: none;
+        }
+
+        .nav li {
+            display: inline-block;
+            padding: 0px 20px;
+        }
+
+        .nav li a {
+            transition: all 0.3s ease 0s;
+        }
+
+        .nav li a:hover {
+            color: #0088a9;
+        }
+
+        button {
+            margin-left: 20px;
+            padding: 9px 25px;
+            background-color: rgba(0, 136, 169, 1);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+        }
+
+        button:hover {
+            background-color: rgba(0, 136, 169, 0.8);
+        }
+
+        #main {
+            /*background-image: url(/images/cat.jpg);*/
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.0/dist/css/coreui.min.css" rel="stylesheet"
+        integrity="sha384-KGkYqG3gD435LMZAC/8byquZiD5665LheNozmHAqp8vrOKBaBL/bFUO5Er5tMRNi" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="/images/logo3.png" alt="Logo">
+        <nav>
+            <ul class="nav">
+                <li> <a href="#">Services</a> </li>
+                <li> <a href="#">Project</a> </li>
+                <li> <a href="/register">register</a> </li>
+            </ul>
+        </nav>
+        <a class="button" href="/login"><button>Log-in</button></a>
+    </header>
+
+    <section id="main" background="/images/cat.jpg">
+
+        {{!-- <img id="bkg" src="/images/cat.jpg" alt="wallpaper"> --}}
+
+    </section>
+
+
+    {{{ body }}}
+
+    <footer></footer>
+
+</body>
+
+</html>
