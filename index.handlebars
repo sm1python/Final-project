@@ -1,0 +1,21 @@
+<body>
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each location}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td><iframe src={{this.location}} width="400" height="250" style="border:0;"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+        <td>{{this.contact}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</body>
