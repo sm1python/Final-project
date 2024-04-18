@@ -1,23 +1,15 @@
 <body>
-  {{#if message}}
-  <div>
-    {{ message }}
+  
+<form method="post" action="/register">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">User name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
   </div>
-  {{/if}}
-  <h1>it doesnt work for now</h1>
-  <form method="post">
-    <div class="mb-3 row">
-      <label for="username" class="col-sm-2 col-form-label">Username</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control-plaintext" id="username" name="username">
-      </div>
-    </div>
-    <div class="mb-3 row">
-      <label for="password" class="col-sm-2 col-form-label">Password</label>
-      <div class="col-sm-10">
-        <input type="password" class="form-control" id="password">
-      </div>
-    </div>
-<input type="submit" value="register">
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
   </form>
 </body>
